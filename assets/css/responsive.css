@@ -121,7 +121,7 @@
     max-width: 100%;
   }
 
-  .hero-card {
+  .hero-overlay-card {
     max-width: 100%;
   }
 
@@ -215,17 +215,46 @@
     line-height: 1.8;
   }
 
-  .hero-card {
-    padding: 26px;
+  .hero-visual {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .hero-overlay-card {
+    position: static;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+    padding: 22px;
     border-radius: 24px;
   }
 
-  .hero-card h2 {
-    font-size: 26px;
+  .hero-overlay-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .hero-overlay-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 14px;
   }
 
   .hero-metrics {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .hero-metrics strong {
+    font-size: 18px;
+  }
+
+  .hero-metrics span {
+    font-size: 11px;
+    line-height: 1.35;
   }
 
   .trust-bar-container,
@@ -350,16 +379,33 @@
     padding-left: 22px;
   }
 
-  .hero-card {
-    padding: 22px;
+  .hero-overlay-card {
+    padding: 20px;
   }
 
-  .hero-card h2 {
+  .hero-overlay-card h2 {
     font-size: 23px;
   }
 
   .hero-card-label {
     font-size: 12px;
+  }
+
+  .hero-overlay-card p {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .hero-metrics {
+    gap: 10px;
+  }
+
+  .hero-metrics strong {
+    font-size: 17px;
+  }
+
+  .hero-metrics span {
+    font-size: 10px;
   }
 
   .trust-item,
@@ -434,7 +480,7 @@
     font-size: 20px;
   }
 
-  .hero-card,
+  .hero-overlay-card,
   .contact-form,
   .trust-item,
   .service-card,
@@ -448,8 +494,20 @@
     padding: 18px;
   }
 
-  .hero-card h2 {
+  .hero-overlay-card h2 {
     font-size: 21px;
+  }
+
+  .hero-overlay-card p {
+    font-size: 13px;
+  }
+
+  .hero-metrics {
+    gap: 8px;
+  }
+
+  .hero-metrics strong {
+    font-size: 16px;
   }
 
   .counter {

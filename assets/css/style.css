@@ -53,10 +53,19 @@
 }
 
 /* ---------- RESET BASE ---------- */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 html {
@@ -72,12 +81,27 @@ body {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.65;
+  position: relative;
   overflow-x: hidden;
 }
 
-img {
+main,
+section,
+.container {
+  width: 100%;
   max-width: 100%;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
   display: block;
+}
+
+iframe {
+  max-width: 100%;
 }
 
 a,
@@ -132,6 +156,7 @@ textarea {
   position: relative;
   padding-top: var(--section-space);
   padding-bottom: var(--section-space);
+  overflow-x: clip;
 }
 
 .section-space::before {
@@ -407,8 +432,8 @@ p {
 /* ---------- WHATSAPP FLOTANTE ---------- */
 .whatsapp-float {
   position: fixed;
-  right: max(20px, calc(env(safe-area-inset-right) + 12px));
-  bottom: max(20px, calc(env(safe-area-inset-bottom) + 16px));
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
   z-index: 1200;
   min-height: 64px;
   min-width: 64px;

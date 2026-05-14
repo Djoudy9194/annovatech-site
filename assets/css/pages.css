@@ -11,6 +11,7 @@
     radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 26%),
     radial-gradient(circle at center right, rgba(59, 130, 246, 0.08), transparent 22%),
     linear-gradient(180deg, #0a0f1a 0%, #101827 100%);
+  overflow-x: clip;
   overflow: hidden;
 }
 
@@ -216,6 +217,7 @@
     rgba(27, 34, 51, 0.9);
   box-shadow: var(--shadow-md);
   position: relative;
+  overflow-x: clip;
   overflow: hidden;
 }
 
@@ -1659,6 +1661,7 @@ button[disabled] {
 .policy-wrapper,
 .policy-block {
   position: relative;
+  overflow-x: clip;
 }
 
 .service-detail-card::after,
