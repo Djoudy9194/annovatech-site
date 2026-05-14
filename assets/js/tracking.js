@@ -73,3 +73,24 @@
     });
   });
 })();
+
+(function () {
+  if (!("serviceWorker" in navigator)) {
+    return;
+  }
+
+  const isSupportedContext =
+    window.location.protocol === "https:" ||
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
+
+  if (!isSupportedContext) {
+    return;
+  }
+
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(() => {
+      // Silently ignore registration failures so analytics stays unaffected.
+    });
+  });
+})();

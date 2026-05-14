@@ -22,6 +22,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <link rel="canonical" href="https://www.annovatech.cl/blog.html" />
   <link rel="icon" type="image/svg+xml" href="assets/images/branding/favicon.svg" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="assets/images/branding/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
   <meta property="og:title" content="Blog de Diseño Web, Marketing y Conversión | AnnovaTech" />
   <meta
@@ -51,11 +55,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link
     rel="preload"
     as="style"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
     onload="this.onload=null;this.rel='stylesheet'"
   />
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" />
   </noscript>
 
   <link rel="stylesheet" href="assets/css/style.css" />
@@ -186,32 +190,68 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <div class="blog-grid">
           <article class="blog-card">
-            <div class="blog-image" style="background-image: url('assets/images/blog/blog1.webp');"></div>
+            <div class="blog-image">
+              <img
+                src="assets/images/blog/blog1-768.webp"
+                srcset="assets/images/blog/blog1-480.webp 480w, assets/images/blog/blog1-768.webp 768w, assets/images/blog/blog1-1280.webp 1280w, assets/images/blog/blog1.webp 1536w"
+                sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1200px) calc(50vw - 32px), 360px"
+                alt="Ilustración del costo de una página web en Chile"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              />
+            </div>
             <div class="blog-content">
               <span class="blog-category">Diseno web</span>
               <h3>Cuanto cuesta una pagina web en Chile y que influye en el precio</h3>
               <p>Una guia clara para entender rangos, factores de precio y como evaluar una inversion web con criterio comercial.</p>
-              <a href="blog/cuanto-cuesta-una-pagina-web-en-chile.html" class="blog-link">Leer articulo</a>
+              <a href="blog/cuanto-cuesta-una-pagina-web-en-chile.html" class="blog-link" aria-label="Leer artículo: Cuánto cuesta una página web en Chile y qué influye en el precio">Leer articulo</a>
             </div>
           </article>
 
           <article class="blog-card">
-            <div class="blog-image" style="background-image: url('assets/images/blog/blog2.webp');"></div>
+            <div class="blog-image">
+              <img
+                src="assets/images/blog/blog2-768.webp"
+                srcset="assets/images/blog/blog2-480.webp 480w, assets/images/blog/blog2-768.webp 768w, assets/images/blog/blog2-1280.webp 1280w, assets/images/blog/blog2.webp 1536w"
+                sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1200px) calc(50vw - 32px), 360px"
+                alt="Comparación visual entre landing page y sitio web"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              />
+            </div>
             <div class="blog-content">
               <span class="blog-category">Landing pages</span>
               <h3>Landing page o sitio web: cual necesita tu negocio realmente</h3>
               <p>Aprende la diferencia entre una landing orientada a conversion y un sitio web pensado para marca y SEO.</p>
-              <a href="blog/landing-page-vs-sitio-web.html" class="blog-link">Leer articulo</a>
+              <a href="blog/landing-page-vs-sitio-web.html" class="blog-link" aria-label="Leer artículo: Landing page o sitio web, cuál necesita tu negocio realmente">Leer articulo</a>
             </div>
           </article>
 
           <article class="blog-card">
-            <div class="blog-image" style="background-image: url('assets/images/blog/blog3.webp');"></div>
+            <div class="blog-image">
+              <img
+                src="assets/images/blog/blog3-768.webp"
+                srcset="assets/images/blog/blog3-480.webp 480w, assets/images/blog/blog3-768.webp 768w, assets/images/blog/blog3-1280.webp 1280w, assets/images/blog/blog3.webp 1536w"
+                sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1200px) calc(50vw - 32px), 360px"
+                alt="Guía visual para convertir visitas en clientes con una página web"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              />
+            </div>
             <div class="blog-content">
               <span class="blog-category">Conversion</span>
               <h3>Como convertir visitas en clientes con una pagina web mejor pensada</h3>
               <p>Revisa principios concretos de estructura, mensaje, CTA y experiencia movil para generar mas oportunidades.</p>
-              <a href="blog/como-convertir-visitas-en-clientes.html" class="blog-link">Leer articulo</a>
+              <a href="blog/como-convertir-visitas-en-clientes.html" class="blog-link" aria-label="Leer artículo: Cómo convertir visitas en clientes con una página web mejor pensada">Leer articulo</a>
             </div>
           </article>
         </div>

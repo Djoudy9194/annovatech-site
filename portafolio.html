@@ -19,6 +19,10 @@
 
   <link rel="canonical" href="https://www.annovatech.cl/portafolio.html" />
   <link rel="icon" type="image/svg+xml" href="assets/images/branding/favicon.svg" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="assets/images/branding/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
   <meta property="og:title" content="Portafolio de Diseño Web y Frontend | AnnovaTech" />
   <meta
@@ -48,11 +52,11 @@
   <link
     rel="preload"
     as="style"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
     onload="this.onload=null;this.rel='stylesheet'"
   />
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" />
   </noscript>
 
   <link rel="stylesheet" href="assets/css/style.css" />
@@ -218,7 +222,19 @@
         <div class="portfolio-showcase-grid">
 
           <article class="portfolio-showcase-card" data-category="landing local">
-            <div class="portfolio-showcase-image portfolio-bg-restaurant"></div>
+            <div class="portfolio-showcase-image portfolio-bg-restaurant">
+              <img
+                src="assets/images/portfolio/portafolio-restaurant-768.webp"
+                srcset="assets/images/portfolio/portafolio-restaurant-480.webp 480w, assets/images/portfolio/portafolio-restaurant-768.webp 768w, assets/images/portfolio/portafolio-restaurant-1280.webp 1280w, assets/images/portfolio/portafolio-restaurant.webp 1536w"
+                sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1200px) calc(50vw - 32px), 380px"
+                alt="Proyecto conceptual de landing page para restaurante"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              />
+            </div>
             <div class="portfolio-showcase-content">
               <span class="portfolio-badge">Concepto Landing</span>
               <h3>Landing page para restaurante</h3>
@@ -234,7 +250,19 @@
           </article>
 
           <article class="portfolio-showcase-card" data-category="local">
-            <div class="portfolio-showcase-image portfolio-bg-barber"></div>
+            <div class="portfolio-showcase-image portfolio-bg-barber">
+              <img
+                src="assets/images/portfolio/portfolio-barber-768.webp"
+                srcset="assets/images/portfolio/portfolio-barber-480.webp 480w, assets/images/portfolio/portfolio-barber-768.webp 768w, assets/images/portfolio/portfolio-barber-1280.webp 1280w, assets/images/portfolio/portfolio-barber.webp 1536w"
+                sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1200px) calc(50vw - 32px), 380px"
+                alt="Proyecto conceptual de página web premium para barbería"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              />
+            </div>
             <div class="portfolio-showcase-content">
               <span class="portfolio-badge">Concepto Local</span>
               <h3>Página web para barbería</h3>
@@ -250,7 +278,19 @@
           </article>
 
           <article class="portfolio-showcase-card" data-category="local">
-            <div class="portfolio-showcase-image portfolio-bg-medical"></div>
+            <div class="portfolio-showcase-image portfolio-bg-medical">
+              <img
+                src="assets/images/portfolio/portfolio-medical-768.webp"
+                srcset="assets/images/portfolio/portfolio-medical-480.webp 480w, assets/images/portfolio/portfolio-medical-768.webp 768w, assets/images/portfolio/portfolio-medical-1280.webp 1280w, assets/images/portfolio/portfolio-medical.webp 1536w"
+                sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1200px) calc(50vw - 32px), 380px"
+                alt="Proyecto conceptual de página web para clínica o centro médico"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              />
+            </div>
             <div class="portfolio-showcase-content">
               <span class="portfolio-badge">Concepto Profesional</span>
               <h3>Página web para clínica o centro médico</h3>
@@ -266,7 +306,19 @@
           </article>
 
           <article class="portfolio-showcase-card" data-category="personal">
-            <div class="portfolio-showcase-image portfolio-bg-personal"></div>
+            <div class="portfolio-showcase-image portfolio-bg-personal">
+              <img
+                src="assets/images/portfolio/portfolio-personal-768.webp"
+                srcset="assets/images/portfolio/portfolio-personal-480.webp 480w, assets/images/portfolio/portfolio-personal-768.webp 768w, assets/images/portfolio/portfolio-personal-1280.webp 1280w, assets/images/portfolio/portfolio-personal.webp 1536w"
+                sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1200px) calc(50vw - 32px), 380px"
+                alt="Proyecto conceptual de portafolio para profesional independiente"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              />
+            </div>
             <div class="portfolio-showcase-content">
               <span class="portfolio-badge">Concepto Personal</span>
               <h3>Portafolio de Profesional Independiente</h3>
@@ -282,7 +334,19 @@
           </article>
 
           <article class="portfolio-showcase-card" data-category="ecommerce">
-            <div class="portfolio-showcase-image portfolio-bg-tech"></div>
+            <div class="portfolio-showcase-image portfolio-bg-tech">
+              <img
+                src="assets/images/portfolio/portfolio-tech-768.webp"
+                srcset="assets/images/portfolio/portfolio-tech-480.webp 480w, assets/images/portfolio/portfolio-tech-768.webp 768w, assets/images/portfolio/portfolio-tech-1280.webp 1280w, assets/images/portfolio/portfolio-tech.webp 1536w"
+                sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1200px) calc(50vw - 32px), 380px"
+                alt="Proyecto conceptual de tienda o marca tecnológica"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              />
+            </div>
             <div class="portfolio-showcase-content">
               <span class="portfolio-badge">Concepto Tech</span>
               <h3>Tienda o Marca Tecnológica</h3>
@@ -298,7 +362,19 @@
           </article>
 
           <article class="portfolio-showcase-card" data-category="landing">
-            <div class="portfolio-showcase-image portfolio-bg-agency"></div>
+            <div class="portfolio-showcase-image portfolio-bg-agency">
+              <img
+                src="assets/images/portfolio/portfolio-agency-768.webp"
+                srcset="assets/images/portfolio/portfolio-agency-480.webp 480w, assets/images/portfolio/portfolio-agency-768.webp 768w, assets/images/portfolio/portfolio-agency-1280.webp 1280w, assets/images/portfolio/portfolio-agency.webp 1536w"
+                sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1200px) calc(50vw - 32px), 380px"
+                alt="Proyecto conceptual de sitio corporativo para agencia o empresa de servicios"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              />
+            </div>
             <div class="portfolio-showcase-content">
               <span class="portfolio-badge">Concepto Corporativo</span>
               <h3>Agencia o Empresa de Servicios</h3>

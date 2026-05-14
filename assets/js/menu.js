@@ -3,16 +3,37 @@ const mainNav = document.getElementById("main-nav");
 const header = document.getElementById("site-header");
 
 if (header) {
+  let isTicking = false;
+  let lastScrolledState = null;
+
   const syncHeaderState = () => {
-    header.classList.toggle("scrolled", window.scrollY > 30);
+    isTicking = false;
+
+    const nextScrolledState = window.scrollY > 30;
+    if (nextScrolledState === lastScrolledState) {
+      return;
+    }
+
+    lastScrolledState = nextScrolledState;
+    header.classList.toggle("scrolled", nextScrolledState);
+  };
+
+  const requestHeaderSync = () => {
+    if (isTicking) {
+      return;
+    }
+
+    isTicking = true;
+    window.requestAnimationFrame(syncHeaderState);
   };
 
   syncHeaderState();
-  window.addEventListener("scroll", syncHeaderState, { passive: true });
+  window.addEventListener("scroll", requestHeaderSync, { passive: true });
 }
 
 if (menuToggle && mainNav) {
   const navLinks = mainNav.querySelectorAll("a");
+  const desktopMediaQuery = window.matchMedia("(min-width: 993px)");
 
   const toggleMenu = () => {
     mainNav.classList.toggle("active");
@@ -50,9 +71,15 @@ if (menuToggle && mainNav) {
     }
   });
 
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 992) {
+  const handleDesktopChange = (event) => {
+    if (event.matches) {
       closeMenu();
     }
-  });
+  };
+
+  if (typeof desktopMediaQuery.addEventListener === "function") {
+    desktopMediaQuery.addEventListener("change", handleDesktopChange);
+  } else {
+    desktopMediaQuery.addListener(handleDesktopChange);
+  }
 }

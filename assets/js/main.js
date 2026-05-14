@@ -9,6 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  const setActiveLink = (currentSectionId) => {
+    navLinks.forEach((link) => {
+      link.classList.remove("active-link");
+
+      const href = link.getAttribute("href");
+      if (href === `#${currentSectionId}`) {
+        link.classList.add("active-link");
+      }
+    });
+  };
+
   /* =========================================
      SCROLL SUAVE PARA ENLACES INTERNOS
   ========================================= */
@@ -42,35 +53,64 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================================
      ENLACE ACTIVO SEGÚN LA SECCIÓN VISIBLE
   ========================================= */
-  const setActiveLink = () => {
-    if (sections.length === 0 || navLinks.length === 0) return;
+  if (sections.length === 0 || navLinks.length === 0) {
+    return;
+  }
 
-    const scrollPosition = window.scrollY + (header ? header.offsetHeight + 120 : 120);
+  if (!("IntersectionObserver" in window)) {
+    const firstSection = sections[0];
+    if (firstSection) {
+      setActiveLink(firstSection.getAttribute("id") || "");
+    }
+    return;
+  }
 
-    let currentSectionId = "";
+  const activeSections = new Map();
+  const headerOffset = header ? header.offsetHeight + 24 : 24;
 
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
+  const syncMostVisibleSection = () => {
+    if (activeSections.size === 0) {
+      return;
+    }
 
-      if (
-        scrollPosition >= sectionTop &&
-        scrollPosition < sectionTop + sectionHeight
-      ) {
-        currentSectionId = section.getAttribute("id");
+    const sortedSections = Array.from(activeSections.values()).sort((left, right) => {
+      if (right.intersectionRatio !== left.intersectionRatio) {
+        return right.intersectionRatio - left.intersectionRatio;
       }
+
+      return left.boundingClientRect.top - right.boundingClientRect.top;
     });
 
-    navLinks.forEach((link) => {
-      link.classList.remove("active-link");
-
-      const href = link.getAttribute("href");
-      if (href === `#${currentSectionId}`) {
-        link.classList.add("active-link");
-      }
-    });
+    const currentSection = sortedSections[0]?.target;
+    if (currentSection?.id) {
+      setActiveLink(currentSection.id);
+    }
   };
 
-  setActiveLink();
-  window.addEventListener("scroll", setActiveLink, { passive: true });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          activeSections.set(entry.target.id, entry);
+        } else {
+          activeSections.delete(entry.target.id);
+        }
+      });
+
+      syncMostVisibleSection();
+    },
+    {
+      rootMargin: `-${headerOffset}px 0px -55% 0px`,
+      threshold: [0.2, 0.4, 0.6, 0.8],
+    }
+  );
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+
+  const initialSection = sections[0];
+  if (initialSection?.id) {
+    setActiveLink(initialSection.id);
+  }
 });

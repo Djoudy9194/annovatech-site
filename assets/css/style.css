@@ -849,12 +849,17 @@ p {
 
 .portfolio-image {
   height: 200px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   position: relative;
   transition: transform 0.6s ease;
   border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.portfolio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .portfolio-image::after {
@@ -879,26 +884,17 @@ p {
 /* IMAGEN PORTAFOLIO HOME */
 
 .portfolio-bg-restaurant {
-  background-image:
-    linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(239, 68, 68, 0.14)),
-    url("../images/portfolio/portafolio-restaurant.webp");
+  background-image: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(239, 68, 68, 0.14));
   background-color: #1a2233;
-}
-.portfolio-bg-barber {
-  background-image: url("../images/portfolio/portafolio-barber.webp");
 }
 
 .portfolio-bg-barber {
-  background-image:
-    linear-gradient(135deg, rgba(59, 130, 246, 0.16), rgba(30, 41, 59, 0.18)),
-    url("../images/portfolio/portfolio-barber.webp");
+  background-image: linear-gradient(135deg, rgba(59, 130, 246, 0.16), rgba(30, 41, 59, 0.18));
   background-color: #1a2233;
 }
 
 .portfolio-bg-personal {
-  background-image:
-    linear-gradient(135deg, rgba(168, 85, 247, 0.16), rgba(59, 130, 246, 0.14)),
-    url("../images/portfolio/portfolio-personal.webp");
+  background-image: linear-gradient(135deg, rgba(168, 85, 247, 0.16), rgba(59, 130, 246, 0.14));
   background-color: #1a2233;
 }
 
@@ -1251,61 +1247,6 @@ button[disabled] {
   font-size: 14px;
   color: var(--color-text-muted);
 }
-
-
-/* BLOG */
-
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-
-.blog-card {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.blog-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-md);
-}
-
-.blog-image {
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-}
-
-.blog-content {
-  padding: 22px;
-}
-
-.blog-category {
-  font-size: 12px;
-  color: var(--color-accent-secondary);
-  margin-bottom: 10px;
-  display: inline-block;
-}
-
-.blog-content h3 {
-  font-size: 20px;
-  margin-bottom: 12px;
-}
-
-.blog-content p {
-  font-size: 14px;
-  margin-bottom: 16px;
-}
-
-.blog-link {
-  color: var(--color-accent-primary);
-  font-weight: 600;
-}
-
 .footer-social {
   margin-top: 24px;
 }
