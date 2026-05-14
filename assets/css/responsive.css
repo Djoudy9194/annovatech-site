@@ -141,6 +141,55 @@
   .contact-form {
     padding: 28px;
   }
+
+  .btn,
+  .whatsapp-float,
+  .menu-toggle,
+  .service-card,
+  .why-card,
+  .process-step,
+  .portfolio-card,
+  .analytics-card,
+  .price-card,
+  .testimonial-card,
+  .faq-item,
+  .portfolio-showcase-card,
+  .portfolio-use-case-card,
+  .blog-card,
+  .blog-link,
+  .social-links a,
+  .footer-links a,
+  .main-nav .nav-list a,
+  .portfolio-filter {
+    transition: none !important;
+  }
+
+  .btn:hover,
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .whatsapp-float:hover,
+  .service-card:hover,
+  .why-card:hover,
+  .process-step:hover,
+  .portfolio-card:hover,
+  .analytics-card:hover,
+  .price-card:hover,
+  .testimonial-card:hover,
+  .faq-item:hover,
+  .portfolio-showcase-card:hover,
+  .portfolio-use-case-card:hover,
+  .blog-card:hover,
+  .social-links a:hover,
+  .footer-links a:hover,
+  .portfolio-filter:hover {
+    transform: none !important;
+  }
+
+  .portfolio-card:hover .portfolio-image,
+  .portfolio-showcase-card:hover .portfolio-showcase-image,
+  .blog-card:hover .blog-image {
+    transform: none !important;
+  }
 }
 
 /* ---------- TABLET VERTICAL / MÓVIL GRANDE ---------- */
