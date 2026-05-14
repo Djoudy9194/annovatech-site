@@ -290,26 +290,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <form
               class="contact-form contact-page-form"
               id="contact-form"
-              name="lead-contact"
+              name="contacto"
               method="POST"
-              action="pages/gracias.html"
-              data-lead-form
               data-netlify="true"
-              data-success-redirect="pages/gracias.html"
-              netlify-honeypot="bot-field"
+              netlify
+              data-lead-form
             >
-              <input type="hidden" name="form-name" value="lead-contact" />
+              <input type="hidden" name="form-name" value="contacto" />
               <input type="hidden" name="source_page" value="contacto" />
-              <p hidden>
-                <label>
-                  No completar este campo si eres humano
-                  <input name="bot-field" autocomplete="off" />
-                </label>
-              </p>
               <div class="form-row">
                 <div class="form-group">
                   <label for="name">Nombre</label>
-                  <input type="text" id="name" name="name" placeholder="Tu nombre completo" autocomplete="name" required />
+                  <input type="text" id="name" name="nombre" placeholder="Tu nombre completo" autocomplete="name" required />
                 </div>
 
                 <div class="form-group">
@@ -321,12 +313,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <div class="form-row">
                 <div class="form-group">
                   <label for="phone">WhatsApp o teléfono</label>
-                  <input type="tel" id="phone" name="phone" placeholder="+56..." autocomplete="tel" required />
+                  <input type="tel" id="phone" name="telefono" placeholder="+56..." autocomplete="tel" required />
                 </div>
 
                 <div class="form-group">
                   <label for="service">Servicio de interés</label>
-                  <select id="service" name="service" required>
+                  <select id="service" name="servicio" required>
                     <option value="">Selecciona un servicio</option>
                     <option value="landing-pages">Landing Pages</option>
                     <option value="frontend">Desarrollo Frontend</option>
@@ -340,12 +332,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <div class="form-row">
                 <div class="form-group">
                   <label for="business">Tipo de negocio</label>
-                  <input type="text" id="business" name="business" placeholder="Ej: restaurante, barbería, marca personal" autocomplete="organization" />
+                  <input type="text" id="business" name="negocio" placeholder="Ej: restaurante, barbería, marca personal" autocomplete="organization" />
                 </div>
 
                 <div class="form-group">
                   <label for="budget">Rango o etapa del proyecto</label>
-                  <select id="budget" name="budget">
+                  <select id="budget" name="presupuesto">
                     <option value="">Selecciona una opción</option>
                     <option value="nuevo">Proyecto nuevo</option>
                     <option value="rediseño">Necesito rediseño</option>
@@ -359,7 +351,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <label for="message">Cuéntanos sobre tu proyecto</label>
                 <textarea
                   id="message"
-                  name="message"
+                  name="mensaje"
                   rows="6"
                   placeholder="Describe tu negocio, lo que necesitas y el objetivo que quieres lograr"
                   autocomplete="off"

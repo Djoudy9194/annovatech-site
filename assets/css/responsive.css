@@ -286,11 +286,25 @@
   }
 
   .whatsapp-float {
-    right: 16px;
-    bottom: 16px;
-    min-height: 50px;
+    right: max(16px, calc(env(safe-area-inset-right) + 12px));
+    bottom: max(16px, calc(env(safe-area-inset-bottom) + 16px));
+    min-height: 56px;
+    min-width: 56px;
     padding: 0 18px;
     font-size: 14px;
+  }
+
+  .social-float {
+    right: max(16px, calc(env(safe-area-inset-right) + 12px));
+    bottom: max(16px, calc(env(safe-area-inset-bottom) + 16px));
+    gap: 8px;
+  }
+
+  .social-btn {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
   }
 }
 
@@ -456,11 +470,24 @@
   }
 
   .whatsapp-float {
-    right: 12px;
-    bottom: 12px;
+    right: max(16px, calc(env(safe-area-inset-right) + 10px));
+    bottom: max(16px, calc(env(safe-area-inset-bottom) + 14px));
     padding: 0 16px;
-    min-height: 48px;
+    min-height: 56px;
+    min-width: 56px;
     font-size: 13px;
+  }
+
+  .social-float {
+    right: max(16px, calc(env(safe-area-inset-right) + 10px));
+    bottom: max(16px, calc(env(safe-area-inset-bottom) + 14px));
+  }
+
+  .social-btn {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
   }
 }
 

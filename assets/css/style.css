@@ -407,26 +407,36 @@ p {
 /* ---------- WHATSAPP FLOTANTE ---------- */
 .whatsapp-float {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 999;
-  min-height: 54px;
+  right: max(20px, calc(env(safe-area-inset-right) + 12px));
+  bottom: max(20px, calc(env(safe-area-inset-bottom) + 16px));
+  z-index: 1200;
+  min-height: 64px;
+  min-width: 64px;
   padding: 0 22px;
   border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   background: linear-gradient(135deg, #16a34a, #22c55e);
   color: #ffffff;
   font-weight: 700;
   letter-spacing: 0.2px;
   box-shadow: 0 16px 35px rgba(34, 197, 94, 0.3);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    opacity var(--transition-fast);
 }
 
 .whatsapp-float:hover {
   transform: translateY(-3px);
   box-shadow: 0 22px 45px rgba(34, 197, 94, 0.38);
+}
+
+.whatsapp-float:active {
+  transform: translateY(0) scale(0.98);
 }
 
 /* ---------- HERO ---------- */
@@ -1315,17 +1325,21 @@ button[disabled] {
 
 .social-float {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: max(20px, calc(env(safe-area-inset-right) + 12px));
+  bottom: max(20px, calc(env(safe-area-inset-bottom) + 16px));
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
   display: flex;
   flex-direction: column;
   gap: 10px;
-  z-index: 999;
+  z-index: 1200;
 }
 
 .social-btn {
-  width: 50px;
-  height: 50px;
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  min-height: 64px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1333,11 +1347,21 @@ button[disabled] {
   color: #fff;
   font-weight: bold;
   text-decoration: none;
-  transition: 0.3s;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 16px 35px rgba(10, 15, 26, 0.24);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    opacity var(--transition-fast);
 }
 
 .social-btn:hover {
   transform: scale(1.1);
+}
+
+.social-btn:active {
+  transform: scale(0.96);
 }
 
 .whatsapp {

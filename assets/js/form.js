@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
 function initializeLeadForm(form) {
   const submitButton = form.querySelector('button[type="submit"]');
   const fields = [
-    { input: form.querySelector('[name="name"]'), validator: validateName },
+    { input: form.querySelector('[name="nombre"]'), validator: validateName },
     { input: form.querySelector('[name="email"]'), validator: validateEmail },
-    { input: form.querySelector('[name="phone"]'), validator: validatePhone },
-    { input: form.querySelector('[name="service"]'), validator: validateService },
-    { input: form.querySelector('[name="message"]'), validator: validateMessage },
+    { input: form.querySelector('[name="telefono"]'), validator: validatePhone },
+    { input: form.querySelector('[name="servicio"]'), validator: validateService },
+    { input: form.querySelector('[name="mensaje"]'), validator: validateMessage },
   ].filter(({ input }) => Boolean(input));
 
   fields.forEach(({ input, validator }) => {
@@ -52,24 +52,16 @@ function initializeLeadForm(form) {
     }
 
     const formData = new FormData(form);
-    const submissionStrategy = getSubmissionStrategy(form);
 
     try {
       setSubmittingState(submitButton, true);
       showFormStatus(form, "Enviando tu solicitud...", "loading");
 
-      if (submissionStrategy.mode === "endpoint") {
-        await submitToEndpoint(submissionStrategy.endpoint, formData);
-      } else if (submissionStrategy.mode === "netlify") {
-        await submitToNetlify(formData);
-      } else {
-        HTMLFormElement.prototype.submit.call(form);
-        return;
-      }
+      await submitToNetlify(formData);
 
       pushTrackingEvent("form_submit_success", {
-        form_id: form.id || form.getAttribute("name") || "lead-form",
-        form_provider: submissionStrategy.mode,
+        form_id: form.id || form.getAttribute("name") || "contacto",
+        form_provider: "netlify",
       });
 
       showFormStatus(
@@ -94,8 +86,8 @@ function initializeLeadForm(form) {
         "error"
       );
       pushTrackingEvent("form_submit_error", {
-        form_id: form.id || form.getAttribute("name") || "lead-form",
-        error_type: submissionStrategy.mode,
+        form_id: form.id || form.getAttribute("name") || "contacto",
+        error_type: "netlify",
       });
     } finally {
       setSubmittingState(submitButton, false);
@@ -127,11 +119,11 @@ function validateMessage(value) {
 
 function getErrorMessage(inputName) {
   const messages = {
-    name: "Por favor, escribe un nombre válido de al menos 3 caracteres.",
+    nombre: "Por favor, escribe un nombre válido de al menos 3 caracteres.",
     email: "Por favor, ingresa un correo electrónico válido.",
-    phone: "Por favor, ingresa un teléfono o WhatsApp válido.",
-    service: "Por favor, selecciona un servicio.",
-    message: "Por favor, escribe un mensaje de al menos 15 caracteres.",
+    telefono: "Por favor, ingresa un teléfono o WhatsApp válido.",
+    servicio: "Por favor, selecciona un servicio.",
+    mensaje: "Por favor, escribe un mensaje de al menos 15 caracteres.",
   };
 
   return messages[inputName] || "Este campo no es válido.";
@@ -202,46 +194,6 @@ function showFormStatus(form, message, type) {
   form.appendChild(status);
 }
 
-function getSubmissionStrategy(form) {
-  const config = window.ANNOVATECH_CONFIG || {};
-  const explicitEndpoint = form.dataset.formEndpoint || config.formEndpoint || "";
-
-  if (explicitEndpoint) {
-    return {
-      mode: "endpoint",
-      endpoint: explicitEndpoint,
-    };
-  }
-
-  if (form.hasAttribute("data-netlify")) {
-    return {
-      mode: "netlify",
-      endpoint: "/",
-    };
-  }
-
-  return {
-    mode: "native",
-    endpoint: form.getAttribute("action") || window.location.pathname,
-  };
-}
-
-async function submitToEndpoint(endpoint, formData) {
-  const response = await fetch(endpoint, {
-    method: "POST",
-    body: formData,
-    headers: endpoint.includes("formspree.io")
-      ? {
-          Accept: "application/json",
-        }
-      : undefined,
-  });
-
-  if (!response.ok) {
-    throw new Error(`Form endpoint error: ${response.status}`);
-  }
-}
-
 async function submitToNetlify(formData) {
   const response = await fetch("/", {
     method: "POST",
@@ -257,13 +209,9 @@ async function submitToNetlify(formData) {
 }
 
 function resolveSuccessRedirect(form) {
-  const config = window.ANNOVATECH_CONFIG || {};
-  return (
-    form.dataset.successRedirect ||
-    config.formSuccessRedirect ||
-    form.getAttribute("action") ||
-    "pages/gracias.html"
-  );
+  const successRedirect = form.dataset.successRedirect || "/pages/gracias.html";
+
+  return successRedirect;
 }
 
 function pushTrackingEvent(eventName, detail) {

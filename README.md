@@ -21,7 +21,7 @@ Sitio estatico HTML/CSS/JS preparado para captacion de leads, SEO tecnico y depl
 
 El proyecto queda preparado para Netlify Forms por defecto.
 
-- Los formularios usan atributos data-netlify y honeypot.
+- Los formularios usan name="contacto", data-netlify="true" y el hidden form-name correspondiente.
 - La validacion y el envio AJAX viven en assets/js/form.js.
 - El evento de exito dispara form_submit_success.
 - El evento de error dispara form_submit_error.
@@ -32,15 +32,8 @@ No requiere cambios extra si se despliega el sitio completo en Netlify.
 
 ### Vercel u otro hosting estatico
 
-Para usar Formspree u otro endpoint externo:
-
-1. Edita assets/js/site-config.js.
-2. Define formEndpoint con la URL del proveedor.
-3. Manten formProvider como referencia operativa si tu equipo lo necesita.
-
-Ejemplo:
-
-formEndpoint: "https://formspree.io/f/tu-endpoint"
+El sitio puede desplegarse como estatico, pero la captacion por formularios de esta version queda preparada especificamente para Netlify Forms.
+Si se despliega fuera de Netlify, habra que implementar otra integracion de formularios.
 
 ## Tracking
 
@@ -92,5 +85,5 @@ Actualiza en una sola pasada:
 
 - Validar el formulario en dominio final antes de lanzar campañas.
 - Configurar eventos de conversion en GTM y GA4.
-- En hosting distinto de Netlify, definir endpoint real para formularios.
+- Si el deploy final no se hace en Netlify, reemplazar la integracion del formulario antes de lanzar trafico.
 - Revisar Search Console luego del deploy.
