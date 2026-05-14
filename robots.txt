@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Bloquear páginas innecesarias
+Disallow: /pages/gracias.html
+
+# Sitemap
+Sitemap: https://www.annovatech.cl/sitemap.xml

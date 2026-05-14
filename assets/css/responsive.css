@@ -1,0 +1,471 @@
+/* =========================================
+   ANNOVATECH - RESPONSIVE CSS
+========================================= */
+
+/* ---------- PANTALLAS GRANDES CONTROLADAS ---------- */
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 56px;
+  }
+
+  .section-heading h2,
+  h2 {
+    font-size: 38px;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------- TABLET HORIZONTAL / LAPTOP PEQUEÑA ---------- */
+@media (max-width: 992px) {
+  :root {
+    --section-space: 90px;
+  }
+
+  h1 {
+    font-size: 48px;
+    letter-spacing: -1px;
+  }
+
+  .section-heading {
+    margin-bottom: 44px;
+  }
+
+  .section-heading h2,
+  h2 {
+    font-size: 34px;
+  }
+
+  .section-heading p {
+    font-size: 17px;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 84px;
+    left: 0;
+    width: 100%;
+    padding: 0 20px 20px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  }
+
+  .main-nav.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .main-nav .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 24px;
+    border-radius: 20px;
+    background: rgba(18, 24, 38, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
+  }
+
+  .main-nav .nav-list a {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .header-actions .btn {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .hero-section {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .hero-container,
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    order: 1;
+  }
+
+  .hero-visual {
+    order: 2;
+  }
+
+  .hero-content h1 {
+    max-width: 100%;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-card {
+    max-width: 100%;
+  }
+
+  .trust-bar-container,
+  .services-grid,
+  .why-us-grid,
+  .portfolio-grid,
+  .analytics-grid,
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-form {
+    padding: 28px;
+  }
+}
+
+/* ---------- TABLET VERTICAL / MÓVIL GRANDE ---------- */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 16px;
+    --section-space: 78px;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 40px;
+    line-height: 1.1;
+  }
+
+  h3 {
+    font-size: 22px;
+  }
+
+  .section-tag {
+    font-size: 13px;
+    padding: 7px 12px;
+    margin-bottom: 14px;
+  }
+
+  .section-heading {
+    margin-bottom: 36px;
+  }
+
+  .section-heading h2,
+  h2 {
+    font-size: 30px;
+  }
+
+  .section-heading p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .header-container {
+    min-height: 76px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .main-nav {
+    top: 76px;
+    padding: 0 16px 16px;
+  }
+
+  .hero-section {
+    padding-top: 58px;
+    padding-bottom: 58px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  .hero-text {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .hero-card {
+    padding: 26px;
+    border-radius: 24px;
+  }
+
+  .hero-card h2 {
+    font-size: 26px;
+  }
+
+  .hero-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-bar-container,
+  .services-grid,
+  .why-us-grid,
+  .portfolio-grid,
+  .analytics-grid,
+  .pricing-grid,
+  .process-grid,
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card,
+  .why-card,
+  .process-step,
+  .portfolio-card,
+  .analytics-card,
+  .price-card,
+  .testimonial-card,
+  .faq-item {
+    padding: 24px;
+  }
+
+  .portfolio-content {
+    padding: 22px;
+  }
+
+  .counter {
+    font-size: 44px;
+  }
+
+  .testimonial-card p {
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  .faq-question {
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  .contact-form {
+    padding: 24px;
+  }
+
+  .map-wrapper iframe {
+    height: 360px;
+  }
+
+  .footer-container {
+    padding-top: 54px;
+    padding-bottom: 34px;
+  }
+
+  .footer-brand p {
+    max-width: 100%;
+  }
+
+  .whatsapp-float {
+    right: 16px;
+    bottom: 16px;
+    min-height: 50px;
+    padding: 0 18px;
+    font-size: 14px;
+  }
+}
+
+/* ---------- MÓVIL ESTÁNDAR ---------- */
+@media (max-width: 576px) {
+  :root {
+    --section-space: 68px;
+  }
+
+  h1 {
+    font-size: 34px;
+    letter-spacing: -0.7px;
+  }
+
+  .section-heading h2,
+  h2 {
+    font-size: 26px;
+  }
+
+  .btn {
+    min-height: 50px;
+    padding: 0 18px;
+    font-size: 14px;
+  }
+
+  .header-container {
+    min-height: 72px;
+    gap: 14px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .menu-toggle {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+  }
+
+  .main-nav {
+    top: 72px;
+  }
+
+  .hero-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .hero-text {
+    font-size: 15px;
+  }
+
+  .hero-features li {
+    font-size: 15px;
+    padding-left: 22px;
+  }
+
+  .hero-card {
+    padding: 22px;
+  }
+
+  .hero-card h2 {
+    font-size: 23px;
+  }
+
+  .hero-card-label {
+    font-size: 12px;
+  }
+
+  .trust-item,
+  .service-card,
+  .why-card,
+  .process-step,
+  .portfolio-content,
+  .analytics-card,
+  .price-card,
+  .testimonial-card,
+  .faq-item,
+  .contact-form {
+    padding: 20px;
+  }
+
+  .portfolio-image {
+    min-height: 180px;
+  }
+
+  .counter {
+    font-size: 38px;
+  }
+
+  .testimonial-card p {
+    font-size: 17px;
+  }
+
+  .faq-question::after {
+    font-size: 22px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 14px 14px;
+    border-radius: 12px;
+  }
+
+  .map-wrapper iframe {
+    height: 300px;
+  }
+
+  .footer-links h3 {
+    margin-bottom: 14px;
+  }
+
+  .footer-links ul {
+    gap: 10px;
+  }
+
+  .footer-bottom {
+    padding: 18px 14px;
+  }
+
+  .footer-bottom p {
+    font-size: 13px;
+  }
+}
+
+/* ---------- MÓVILES MUY PEQUEÑOS ---------- */
+@media (max-width: 400px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  .section-heading h2,
+  h2 {
+    font-size: 24px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .hero-card,
+  .contact-form,
+  .trust-item,
+  .service-card,
+  .why-card,
+  .process-step,
+  .portfolio-content,
+  .analytics-card,
+  .price-card,
+  .testimonial-card,
+  .faq-item {
+    padding: 18px;
+  }
+
+  .hero-card h2 {
+    font-size: 21px;
+  }
+
+  .counter {
+    font-size: 34px;
+  }
+
+  .whatsapp-float {
+    right: 12px;
+    bottom: 12px;
+    padding: 0 16px;
+    min-height: 48px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-image-wrapper {
+    max-width: 100%;
+  }
+}

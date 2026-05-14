@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redireccionando al blog | AnnovaTech</title>
+  <meta name="description" content="Redirección de artículos antiguos al blog estático de AnnovaTech." />
+  <meta name="robots" content="noindex,follow" />
+  <link rel="canonical" href="https://www.annovatech.cl/blog.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/branding/favicon.svg" />
+  <meta http-equiv="refresh" content="0; url=blog.html" />
+  <script>
+    (function () {
+      var routes = {
+        "cuanto-cuesta-una-pagina-web-en-chile": "blog/cuanto-cuesta-una-pagina-web-en-chile.html",
+        "landing-page-vs-sitio-web": "blog/landing-page-vs-sitio-web.html",
+        "como-convertir-visitas-en-clientes": "blog/como-convertir-visitas-en-clientes.html"
+      };
+
+      var params = new URLSearchParams(window.location.search);
+      var postId = params.get("post");
+      var destination = routes[postId] || "blog.html";
+      window.location.replace(destination);
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <main class="section-space">
+    <div class="container section-heading">
+      <p class="section-tag">Redireccionando</p>
+      <h1>Estamos cargando el articulo correcto</h1>
+      <p>Si la redirección no ocurre automáticamente, puedes volver al <a href="blog.html">blog</a>.</p>
+    </div>
+  </main>
+</body>
+</html>
