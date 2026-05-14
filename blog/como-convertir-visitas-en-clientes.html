@@ -27,7 +27,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="twitter:image" content="https://www.annovatech.cl/assets/images/branding/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/pages.css" />
 </head>
@@ -46,7 +47,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <header class="site-header">
   <div class="container header-container">
-    <a href="../index.html" class="logo">
+    <a href="../index.html" class="logo" aria-label="Ir al inicio de AnnovaTech">
       <span class="logo-primary">Annova</span><span class="logo-accent">Tech</span>
     </a>
   </div>
@@ -70,7 +71,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         Guía estratégica AnnovaTech • Conversión y ventas digitales
       </p>
 
-      <img src="../assets/images/blog/blog3.webp" alt="convertir visitas en clientes web" loading="lazy" decoding="async" />
+      <img src="../assets/images/blog/blog3.webp" alt="convertir visitas en clientes web" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024" />
 
       <p>
         Tener visitas en tu página web no significa que estás generando ventas.
@@ -278,7 +279,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <footer class="site-footer">
   <div class="container footer-container">
     <div class="footer-brand">
-      <a href="../index.html" class="logo">
+      <a href="../index.html" class="logo" aria-label="Ir al inicio de AnnovaTech">
         <span class="logo-primary">Annova</span><span class="logo-accent">Tech</span>
       </a>
       <p>Frontend, marketing y analitica para negocios que quieren crecer.</p>
@@ -286,7 +287,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 
-<script src="../assets/js/site-config.js"></script>
-<script src="../assets/js/tracking.js"></script>
+<script src="../assets/js/tracking.js" defer></script>
 </body>
 </html>

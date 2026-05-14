@@ -1,5 +1,15 @@
 const menuToggle = document.getElementById("menu-toggle");
 const mainNav = document.getElementById("main-nav");
+const header = document.getElementById("site-header");
+
+if (header) {
+  const syncHeaderState = () => {
+    header.classList.toggle("scrolled", window.scrollY > 30);
+  };
+
+  syncHeaderState();
+  window.addEventListener("scroll", syncHeaderState, { passive: true });
+}
 
 if (menuToggle && mainNav) {
   const navLinks = mainNav.querySelectorAll("a");

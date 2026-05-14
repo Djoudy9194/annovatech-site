@@ -1340,6 +1340,20 @@ button[disabled] {
     color var(--transition-fast);
 }
 
+.social-links svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.social-proof-links svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
 .social-links a:hover {
   transform: translateY(-3px);
   background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));

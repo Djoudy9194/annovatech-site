@@ -1,25 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const header = document.getElementById("site-header");
   const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
   const sections = document.querySelectorAll("main section[id]");
   const menuToggle = document.getElementById("menu-toggle");
   const mainNav = document.getElementById("main-nav");
+  const header = document.getElementById("site-header");
 
-  /* =========================================
-     HEADER DINÁMICO AL HACER SCROLL
-  ========================================= */
-  const handleHeaderScroll = () => {
-    if (!header) return;
-
-    if (window.scrollY > 30) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  };
-
-  handleHeaderScroll();
-  window.addEventListener("scroll", handleHeaderScroll);
+  if (navLinks.length === 0 && sections.length === 0) {
+    return;
+  }
 
   /* =========================================
      SCROLL SUAVE PARA ENLACES INTERNOS
@@ -84,5 +72,5 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   setActiveLink();
-  window.addEventListener("scroll", setActiveLink);
+  window.addEventListener("scroll", setActiveLink, { passive: true });
 });
