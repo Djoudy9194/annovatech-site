@@ -18,6 +18,31 @@
     gap: 36px;
   }
 
+  .hero-visual {
+    padding-bottom: 40px;
+  }
+
+  .hero-overlay-card {
+    left: 24px;
+    bottom: -48px;
+    width: calc(100% - 48px);
+    max-width: 360px;
+    padding: 20px;
+  }
+
+  .hero-overlay-card h2 {
+    font-size: 20px;
+  }
+
+  .hero-overlay-card p {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  .hero-metrics {
+    gap: 14px;
+  }
+
   .process-grid {
     grid-template-columns: repeat(3, 1fr);
   }
