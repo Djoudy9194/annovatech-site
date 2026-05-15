@@ -18,6 +18,16 @@
     gap: 36px;
   }
 
+  .process-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
   .hero-visual {
     padding-bottom: 40px;
   }
@@ -41,14 +51,6 @@
 
   .hero-metrics {
     gap: 14px;
-  }
-
-  .process-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .footer-container {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 

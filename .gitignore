@@ -1,0 +1,5 @@
+node_modules
+server.log
+report.json
+new_report.json
+perf_*.json
