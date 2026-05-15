@@ -47,14 +47,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="stylesheet" href="../assets/css/pages.css" />
 
   <!-- Google Analytics GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R8S6NN076J"></script>
-
   <script>
+  window.addEventListener('load', () => {
+    const script = document.createElement('script');
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-R8S6NN076J';
+    script.async = true;
+    document.head.appendChild(script);
+
     window.dataLayer = window.dataLayer || [];
 
     function gtag() {
       dataLayer.push(arguments);
     }
+
+    window.gtag = gtag;
 
     gtag('js', new Date());
 
@@ -62,8 +68,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       anonymize_ip: true,
       transport_type: 'beacon'
     });
-  </script>
-  
+  });
+</script>
+
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
