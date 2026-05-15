@@ -1,0 +1,4 @@
+--- blog-post.html ---
+  [!] Missing OG tags
+  [!] Missing Twitter tags
+  [!] Missing JSON-LD
