@@ -228,5 +228,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <script src="../assets/js/menu.js" defer></script>
   <script src="../assets/js/tracking.js" defer></script>
+
+  <script>
+window.addEventListener('load', () => {
+  if (typeof gtag === 'function') {
+    gtag('event', 'generate_lead', {
+      currency: 'CLP',
+      value: 1,
+      method: 'contact_form'
+    });
+
+    console.log('Evento generate_lead enviado');
+  }
+});
+</script>
 </body>
 </html>
