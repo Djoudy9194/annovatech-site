@@ -78,6 +78,7 @@
       });
     });
 
+    loadScriptsWhenVisible("#contact", ["assets/js/form.js"]);
     loadScriptsWhenVisible("#analytics", ["assets/js/counters.js"]);
     loadScriptsWhenVisible("#testimonials", ["assets/js/slider.js"]);
     loadScriptsWhenVisible("#faq", ["assets/js/faq.js"]);

@@ -46,31 +46,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="stylesheet" href="../assets/css/responsive.css" />
   <link rel="stylesheet" href="../assets/css/pages.css" />
 
-  <!-- Google Analytics GA4 -->
-  <script>
-  window.addEventListener('load', () => {
-    const script = document.createElement('script');
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-R8S6NN076J';
-    script.async = true;
-    document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    window.gtag = gtag;
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-R8S6NN076J', {
-      anonymize_ip: true,
-      transport_type: 'beacon'
-    });
-  });
-</script>
-
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -231,15 +206,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <script>
 window.addEventListener('load', () => {
-  if (typeof gtag === 'function') {
-    gtag('event', 'generate_lead', {
-      currency: 'CLP',
-      value: 1,
-      method: 'contact_form'
-    });
+  const payload = {
+    currency: 'CLP',
+    value: 1,
+    method: 'contact_form'
+  };
 
-    console.log('Evento generate_lead enviado');
+  if (window.ANNOVA_TRACKING && typeof window.ANNOVA_TRACKING.pushEvent === 'function') {
+    window.ANNOVA_TRACKING.pushEvent('generate_lead', payload);
+    return;
   }
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'generate_lead',
+    page_path: window.location.pathname,
+    page_title: document.title,
+    ...payload
+  });
 });
 </script>
 </body>
