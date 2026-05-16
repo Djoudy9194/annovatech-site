@@ -1,10 +1,21 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initializeLeadForms() {
   const leadForms = document.querySelectorAll("form[data-lead-form]");
 
   leadForms.forEach((form) => {
+    if (form.dataset.leadFormInitialized === "true") {
+      return;
+    }
+
+    form.dataset.leadFormInitialized = "true";
     initializeLeadForm(form);
   });
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initializeLeadForms, { once: true });
+} else {
+  initializeLeadForms();
+}
 
 function initializeLeadForm(form) {
   const submitButton = form.querySelector('button[type="submit"]');
