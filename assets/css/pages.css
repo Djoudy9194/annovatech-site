@@ -682,6 +682,165 @@
   box-shadow: var(--shadow-md);
 }
 
+#crmWebToEntityForm.contact-page-form-zoho {
+  width: 100%;
+  max-width: none;
+  color: var(--color-text-primary);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+    rgba(27, 34, 51, 0.88);
+}
+
+#crmWebToEntityForm.contact-page-form-zoho * {
+  box-sizing: border-box;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_title {
+  padding: 0;
+  margin-bottom: 18px;
+  color: var(--color-text-primary);
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1.6rem, 2.6vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_row {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 18px;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_col_lab,
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_col_fld,
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_col_fld input[type="text"],
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_col_fld textarea {
+  width: 100% !important;
+  float: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_col_lab label {
+  color: var(--color-text-primary);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_col_fld input[type="text"],
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_col_fld textarea {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 14px;
+  color: var(--color-text-primary);
+  padding: 15px 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_col_fld input[type="text"]:hover,
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_col_fld textarea:hover {
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_col_fld input[type="text"]:focus,
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_col_fld textarea:focus {
+  border-color: rgba(0, 212, 255, 0.45) !important;
+  background-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.08);
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_col_fld textarea {
+  min-height: 160px;
+  resize: vertical;
+  font-family: inherit !important;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_col_help {
+  width: 100%;
+  max-width: none;
+  margin: 8px 0 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_col_help:empty {
+  display: none;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_tooltip_ctn {
+  background: rgba(10, 15, 26, 0.96);
+  color: var(--color-text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-sm);
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_privacy {
+  padding: 6px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_privacy_txt {
+  width: calc(100% - 34px);
+  margin-left: 10px;
+  color: var(--color-text-muted) !important;
+  font-size: 14px !important;
+  line-height: 1.7;
+  font-family: inherit;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_privacy_txt div {
+  font-family: inherit !important;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_privacy_txt a {
+  color: var(--color-accent-secondary);
+}
+
+#crmWebToEntityForm.contact-page-form-zoho #privacyErr7420333000000605646 {
+  padding-left: 34px !important;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_actions .zcwf_col_fld {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_button {
+  min-width: 160px;
+  max-width: none;
+  padding: 14px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .formsubmit.zcwf_button {
+  color: #0a0f1a !important;
+  background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary)) !important;
+  box-shadow: 0 12px 28px rgba(255, 199, 0, 0.22);
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_button[type="reset"] {
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .formsubmit.zcwf_button:hover,
+#crmWebToEntityForm.contact-page-form-zoho .zcwf_button[type="reset"]:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 199, 0, 0.22) !important;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho .formsubmit.zcwf_button[disabled] {
+  opacity: 0.72;
+  cursor: wait;
+  transform: none;
+}
+
 .form-row {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

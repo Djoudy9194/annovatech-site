@@ -297,87 +297,256 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
           <!-- FORMULARIO -->
           <div class="contact-page-form-wrapper">
-            <form
-              class="contact-form contact-page-form"
-              id="contact-form"
-              name="contacto"
-              method="POST"
-              data-netlify="true"
-              netlify
-              data-lead-form
-            >
-              <input type="hidden" name="form-name" value="contacto" />
-              <input type="hidden" name="source_page" value="contacto" />
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="name">Nombre</label>
-                  <input type="text" id="name" name="nombre" placeholder="Tu nombre completo" autocomplete="name" required />
+            <div id="crmWebToEntityForm" class="contact-page-form contact-page-form-zoho zcwf_lblLeft crmWebToEntityForm">
+              <div class="zcwf_title">Contacto AnnovaTech</div>
+
+              <form
+                id="webform7420333000000605646"
+                action="https://crm.zoho.com/crm/WebToLeadForm"
+                name="WebToLeads7420333000000605646"
+                method="POST"
+                onsubmit="javascript:document.charset='UTF-8'; return checkMandatory7420333000000605646()"
+                accept-charset="UTF-8"
+              >
+                <input type="text" style="display:none;" name="xnQsjsdp" value="560ddbd2381a73b385792784dd52a503423056357fab0f293cf3e2c6168cd362" />
+                <input type="hidden" name="zc_gad" id="zc_gad" value="" />
+                <input type="text" style="display:none;" name="xmIwtLD" value="c0e038bd779d9a03033c57e7d52232e7dcb2e382aab722ae836a17da691d51ebe0c3b307ba6816d85eed002c3a59bb08" />
+                <input type="text" style="display:none;" name="actionType" value="TGVhZHM=" />
+                <input type="text" style="display:none;" name="returnURL" value="null" />
+
+                <div class="zcwf_row">
+                  <div class="zcwf_col_lab">
+                    <label for="First_Name">Nombre <span style="color:red;">*</span></label>
+                  </div>
+                  <div class="zcwf_col_fld">
+                    <input type="text" id="First_Name" aria-required="true" aria-label="First Name" name="First Name" aria-valuemax="40" maxlength="40" />
+                    <div class="zcwf_col_help"></div>
+                  </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="email">Correo electrónico</label>
-                  <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required />
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="phone">WhatsApp o teléfono</label>
-                  <input type="tel" id="phone" name="telefono" placeholder="+56..." autocomplete="tel" required />
+                <div class="zcwf_row">
+                  <div class="zcwf_col_lab">
+                    <label for="Last_Name">Apellidos <span style="color:red;">*</span></label>
+                  </div>
+                  <div class="zcwf_col_fld">
+                    <input type="text" id="Last_Name" aria-required="true" aria-label="Last Name" name="Last Name" aria-valuemax="80" maxlength="80" />
+                    <div class="zcwf_col_help"></div>
+                  </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="service">Servicio de interés</label>
-                  <select id="service" name="servicio" required>
-                    <option value="">Selecciona un servicio</option>
-                    <option value="landing-pages">Landing Pages</option>
-                    <option value="frontend">Desarrollo Frontend</option>
-                    <option value="rediseño">Rediseño Web</option>
-                    <option value="responsive">Optimización Responsive</option>
-                    <option value="analitica">Analítica Web</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="business">Tipo de negocio</label>
-                  <input type="text" id="business" name="negocio" placeholder="Ej: restaurante, barbería, marca personal" autocomplete="organization" />
+                <div class="zcwf_row">
+                  <div class="zcwf_col_lab">
+                    <label for="Email">Correo electrónico <span style="color:red;">*</span></label>
+                  </div>
+                  <div class="zcwf_col_fld">
+                    <input type="text" ftype="email" autocomplete="false" id="Email" aria-required="true" aria-label="Email" name="Email" aria-valuemax="100" crmlabel="" maxlength="100" />
+                    <div class="zcwf_col_help"></div>
+                  </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="budget">Rango o etapa del proyecto</label>
-                  <select id="budget" name="presupuesto">
-                    <option value="">Selecciona una opción</option>
-                    <option value="nuevo">Proyecto nuevo</option>
-                    <option value="rediseño">Necesito rediseño</option>
-                    <option value="mejora">Quiero mejorar una página actual</option>
-                    <option value="consultar">Quiero orientación primero</option>
-                  </select>
+                <div class="zcwf_row">
+                  <div class="zcwf_col_lab">
+                    <label for="Phone">Teléfono <span style="color:red;">*</span></label>
+                  </div>
+                  <div class="zcwf_col_fld">
+                    <input type="text" id="Phone" aria-required="true" aria-label="Phone" name="Phone" aria-valuemax="30" maxlength="30" />
+                    <div class="zcwf_col_help"></div>
+                  </div>
                 </div>
-              </div>
 
-              <div class="form-group">
-                <label for="message">Cuéntanos sobre tu proyecto</label>
-                <textarea
-                  id="message"
-                  name="mensaje"
-                  rows="6"
-                  placeholder="Describe tu negocio, lo que necesitas y el objetivo que quieres lograr"
-                  autocomplete="off"
-                  required
-                ></textarea>
-              </div>
+                <div class="zcwf_row">
+                  <div class="zcwf_col_lab">
+                    <label for="Company">Empresa (Opcional)</label>
+                  </div>
+                  <div class="zcwf_col_fld">
+                    <input type="text" id="Company" aria-required="false" aria-label="Company" name="Company" aria-valuemax="200" maxlength="200" />
+                    <div class="zcwf_col_help"></div>
+                  </div>
+                </div>
 
-              <div class="contact-form-note">
-                <p>
-                  Al enviar este formulario aceptas que ANNOVA TECH SpA use tus datos para responder tu solicitud.
-                  Revisa nuestra <a href="pages/politicas.html">política de privacidad</a>.
-                </p>
-              </div>
+                <div class="zcwf_row">
+                  <div class="zcwf_col_lab">
+                    <label for="Description">Describe tu proyecto o necesidad <span style="color:red;">*</span></label>
+                  </div>
+                  <div class="zcwf_col_fld">
+                    <textarea style="font-family: Arial, sans-serif;" aria-multiline="true" id="Description" aria-required="true" aria-label="Description" name="Description"></textarea>
+                    <div class="zcwf_col_help">
+                      <span
+                        title="Cu&eacute;ntanos sobre tu proyecto"
+                        style="cursor: pointer; width: 16px; height: 16px; display: inline-block; background: #fff; border: 1px solid #c0c6cc; color: #c1c1c1; text-align: center; font-size: 11px; line-height: 16px; font-weight: bold; border-radius: 50%;"
+                        onclick="tooltipShow7420333000000605646(this)"
+                      >?</span>
+                      <div class="zcwf_tooltip_over" style="display: none;">
+                        <span class="zcwf_tooltip_ctn">Cu&eacute;ntanos sobre tu proyecto</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-              <button type="submit" class="btn btn-primary">Enviar solicitud</button>
-            </form>
+                <div class="zcwf_row">
+                  <div class="zcwf_privacy">
+                    <div class="dIB vaT" align="left">
+                      <div class="displayPurpose crm-small-font-size">
+                        <label class="newCustomchkbox-md dIB w100_per">
+                          <input
+                            autocomplete="off"
+                            id="privacyTool7420333000000605646"
+                            type="checkbox"
+                            aria-checked="false"
+                            name=""
+                            aria-errormessage="privacyErr7420333000000605646"
+                            aria-label="privacyTool"
+                            onclick="disableErr7420333000000605646()"
+                          />
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="dIB zcwf_privacy_txt">
+                      <div>He leído y acepto la Política de Privacidad de AnnovaTech y autorizo el tratamiento de mis datos para responder consultas y solicitudes comerciales.</div>
+                      <div>
+                        <a title="Política de Privacidad de AnnovaTech" target="_blank" href="pages/politicas.html">Política de Privacidad de AnnovaTech</a>
+                      </div>
+                    </div>
+
+                    <div id="privacyErr7420333000000605646" aria-live="polite" style="font-size:12px;color:red;padding-left: 5px;visibility:hidden;">Acepte por favor</div>
+                  </div>
+                </div>
+
+                <input type="text" style="display:none;" name="aG9uZXlwb3Q" value="" />
+
+                <div class="zcwf_row zcwf_actions">
+                  <div class="zcwf_col_lab"></div>
+                  <div class="zcwf_col_fld">
+                    <input type="submit" id="formsubmit" role="button" class="formsubmit zcwf_button" value="Enviar" aria-label="Enviar" title="Enviar" />
+                    <input type="reset" class="zcwf_button" role="button" name="reset" value="Restablecer" aria-label="Restablecer" title="Restablecer" />
+                  </div>
+                </div>
+
+                <script>
+                  function privacyAlert7420333000000605646() {
+                    var privacyTool = document.getElementById("privacyTool7420333000000605646");
+                    var privacyErr = document.getElementById("privacyErr7420333000000605646");
+                    if (privacyTool != undefined && !privacyTool.checked) {
+                      privacyErr.style.visibility = "visible";
+                      privacyTool.ariaInvalid = "true";
+                      privacyTool.focus();
+                      return false;
+                    }
+                    return true;
+                  }
+
+                  function disableErr7420333000000605646() {
+                    var privacyTool = document.getElementById("privacyTool7420333000000605646");
+                    var privacyErr = document.getElementById("privacyErr7420333000000605646");
+                    if (privacyTool != undefined && privacyTool.checked && privacyErr != undefined) {
+                      privacyErr.style.visibility = "hidden";
+                      privacyTool.ariaInvalid = "false";
+                    }
+                  }
+
+                  function validateEmail7420333000000605646() {
+                    var form = document.forms["WebToLeads7420333000000605646"];
+                    var emailFld = form.querySelectorAll("[ftype=email]");
+                    var i;
+                    for (i = 0; i < emailFld.length; i++) {
+                      var emailVal = emailFld[i].value;
+                      if (emailVal.replace(/^\s+|\s+$/g, "").length != 0) {
+                        var atpos = emailVal.indexOf("@");
+                        var dotpos = emailVal.lastIndexOf(".");
+                        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= emailVal.length) {
+                          alert("Introduzca una dirección de correo electrónico válida. ");
+                          emailFld[i].focus();
+                          return false;
+                        }
+                      }
+                    }
+                    return true;
+                  }
+
+                  function checkMandatory7420333000000605646() {
+                    var mndFileds = new Array("First Name", "Last Name", "Email", "Phone", "Description");
+                    var fldLangVal = new Array("Nombre", "Apellidos", "Correo electrónico", "Teléfono", "Describe tu proyecto o necesidad");
+
+                    for (i = 0; i < mndFileds.length; i++) {
+                      var fieldObj = document.forms["WebToLeads7420333000000605646"][mndFileds[i]];
+                      if (fieldObj) {
+                        if ((fieldObj.value).replace(/^\s+|\s+$/g, "").length == 0) {
+                          if (fieldObj.type == "file") {
+                            alert("Seleccione un archivo para cargar.");
+                            fieldObj.focus();
+                            return false;
+                          }
+                          alert(fldLangVal[i] + " no puede estar vacío.");
+                          fieldObj.focus();
+                          return false;
+                        } else if (fieldObj.nodeName == "SELECT") {
+                          if (fieldObj.options[fieldObj.selectedIndex].value == "-None-") {
+                            alert(fldLangVal[i] + " no puede ser nulo.");
+                            fieldObj.focus();
+                            return false;
+                          }
+                        } else if (fieldObj.type == "checkbox") {
+                          if (fieldObj.checked == false) {
+                            alert("Please accept " + fldLangVal[i]);
+                            fieldObj.focus();
+                            return false;
+                          }
+                        }
+
+                        try {
+                          if (fieldObj.name == "Last Name") {
+                            name = fieldObj.value;
+                          }
+                        } catch (e) {}
+                      }
+                    }
+
+                    if (!validateEmail7420333000000605646()) {
+                      return false;
+                    }
+
+                    if (!privacyAlert7420333000000605646()) {
+                      return false;
+                    }
+
+                    var urlparams = new URLSearchParams(window.location.search);
+                    if (urlparams.has("service") && urlparams.get("service") === "smarturl") {
+                      var webform = document.getElementById("webform7420333000000605646");
+                      var service = urlparams.get("service");
+                      var smarturlfield = document.createElement("input");
+                      smarturlfield.setAttribute("type", "hidden");
+                      smarturlfield.setAttribute("value", service);
+                      smarturlfield.setAttribute("name", "service");
+                      webform.appendChild(smarturlfield);
+                    }
+
+                    document.querySelector(".crmWebToEntityForm .formsubmit").setAttribute("disabled", true);
+                  }
+
+                  function tooltipShow7420333000000605646(el) {
+                    var tooltip = el.nextElementSibling;
+                    var tooltipDisplay = tooltip.style.display;
+                    if (tooltipDisplay == "none") {
+                      var allTooltip = document.getElementsByClassName("zcwf_tooltip_over");
+                      for (i = 0; i < allTooltip.length; i++) {
+                        allTooltip[i].style.display = "none";
+                      }
+                      tooltip.style.display = "block";
+                    } else {
+                      tooltip.style.display = "none";
+                    }
+                  }
+                </script>
+
+                <!-- Do not remove this --- Analytics Tracking code starts -->
+                <script
+                  id="wf_anal"
+                  src="https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=edde93e25d29c6fbffeefb898e6d61bc34ba027c4f9ce6ef32e804f14e2811e9b45d6eb52ab723dafc8b2afac79a0fd0gid8e23e3b26ab7924d5ac164afc3f576e49676fbd49599582015b624c3ed88e019gidcea1a471daa2bb56e151c6e356e16aef9be09e071ff6a86eee8e4e23821d2343gide7185c001d28c40a30b42c61d92de1af899e432db61d97dba7cd6a489932283c&tw=c61727f5b09288bcd7062f73acbd62469d3dfbf74e6ba2c1fb06e15f373319cc"
+                ></script>
+                <!-- Do not remove this --- Analytics Tracking code ends. -->
+              </form>
+            </div>
           </div>
 
         </div>
@@ -563,6 +732,5 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <script src="assets/js/menu.js" defer></script>
   <script src="assets/js/tracking.js" defer></script>
-  <script src="assets/js/form.js" defer></script>
 </body>
 </html>
