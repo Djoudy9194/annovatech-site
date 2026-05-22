@@ -78,6 +78,12 @@
       });
     });
 
+    runWhenIdle(() => {
+      loadScript("assets/js/faq.js").catch(() => {
+        // Ignore lazy script failures to preserve core page functionality.
+      });
+    });
+
     loadScriptsWhenVisible("#contact", ["assets/js/form.js"]);
     loadScriptsWhenVisible("#analytics", ["assets/js/counters.js"]);
     loadScriptsWhenVisible("#testimonials", ["assets/js/slider.js"]);
