@@ -685,10 +685,14 @@
 #crmWebToEntityForm.contact-page-form-zoho {
   width: 100%;
   max-width: none;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--color-text-primary);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
     rgba(27, 34, 51, 0.88);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(12px);
 }
 
 #crmWebToEntityForm.contact-page-form-zoho * {
@@ -776,13 +780,30 @@
 }
 
 #crmWebToEntityForm.contact-page-form-zoho .zcwf_privacy {
-  padding: 6px 0 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 14px 0 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+#crmWebToEntityForm.contact-page-form-zoho .dIB.vaT,
+#crmWebToEntityForm.contact-page-form-zoho .displayPurpose,
+#crmWebToEntityForm.contact-page-form-zoho .newCustomchkbox-md {
+  display: block;
+}
+
+#crmWebToEntityForm.contact-page-form-zoho #privacyTool7420333000000605646 {
+  width: 18px;
+  height: 18px;
+  margin: 4px 0 0;
+  accent-color: var(--color-accent-secondary);
+}
+
 #crmWebToEntityForm.contact-page-form-zoho .zcwf_privacy_txt {
-  width: calc(100% - 34px);
-  margin-left: 10px;
+  width: 100%;
+  margin-left: 0;
   color: var(--color-text-muted) !important;
   font-size: 14px !important;
   line-height: 1.7;
@@ -798,7 +819,8 @@
 }
 
 #crmWebToEntityForm.contact-page-form-zoho #privacyErr7420333000000605646 {
-  padding-left: 34px !important;
+  grid-column: 2;
+  padding-left: 0 !important;
 }
 
 #crmWebToEntityForm.contact-page-form-zoho .zcwf_actions .zcwf_col_fld {
@@ -839,6 +861,29 @@
   opacity: 0.72;
   cursor: wait;
   transform: none;
+}
+
+@media (max-width: 767px) {
+  #crmWebToEntityForm.contact-page-form-zoho {
+    padding: 24px;
+  }
+
+  #crmWebToEntityForm.contact-page-form-zoho .zcwf_privacy {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  #crmWebToEntityForm.contact-page-form-zoho #privacyErr7420333000000605646 {
+    grid-column: 1;
+  }
+
+  #crmWebToEntityForm.contact-page-form-zoho .zcwf_actions .zcwf_col_fld {
+    flex-direction: column;
+  }
+
+  #crmWebToEntityForm.contact-page-form-zoho .zcwf_button {
+    width: 100%;
+  }
 }
 
 .form-row {
