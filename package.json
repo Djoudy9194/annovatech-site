@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "chrome-launcher": "^1.2.1",
+    "lighthouse": "^13.3.0",
+    "lighthouse-logger": "^2.0.2",
+    "puppeteer": "^24.43.1"
+  }
+}

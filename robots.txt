@@ -5,4 +5,4 @@ Allow: /
 Disallow: /pages/gracias.html
 
 # Sitemap
-Sitemap: https://www.annovatech.cl/sitemap.xml
+Sitemap: https://annovatech.cl/sitemap.xml
