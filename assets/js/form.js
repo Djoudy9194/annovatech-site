@@ -68,7 +68,7 @@ function initializeLeadForm(form) {
       setSubmittingState(submitButton, true);
       showFormStatus(form, "Enviando tu solicitud...", "loading");
 
-      await submitToNetlify(formData);
+      await submitToNetlify(formData, form);
 
       pushTrackingEvent("form_submit_success", {
         form_id: form.id || form.getAttribute("name") || "contacto",
@@ -86,9 +86,8 @@ function initializeLeadForm(form) {
         field.classList.remove("input-success");
       });
 
-      window.setTimeout(() => {
-        window.location.href = resolveSuccessRedirect(form);
-      }, 900);
+      window.location.href = resolveSuccessRedirect(form);
+      return;
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
       showFormStatus(
@@ -205,8 +204,24 @@ function showFormStatus(form, message, type) {
   form.appendChild(status);
 }
 
-async function submitToNetlify(formData) {
-  const response = await fetch("/", {
+function getNetlifySubmitUrl(form) {
+  const action = form.getAttribute("action");
+
+  if (action && !/^https?:\/\//i.test(action)) {
+    return action;
+  }
+
+  const pathname = window.location.pathname || "/";
+
+  if (pathname === "/" || pathname.endsWith("/index.html")) {
+    return "/";
+  }
+
+  return pathname;
+}
+
+async function submitToNetlify(formData, form) {
+  const response = await fetch(getNetlifySubmitUrl(form), {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",

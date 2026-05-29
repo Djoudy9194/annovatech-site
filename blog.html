@@ -38,9 +38,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="AnnovaTech" />
   <meta property="og:locale" content="es_CL" />
-  <meta property="og:url" content="https://www.annovatech.cl/blog.html" />
-  <meta property="og:image" content="https://www.annovatech.cl/assets/images/branding/og-image.png" />
-  <meta property="og:image:secure_url" content="https://www.annovatech.cl/assets/images/branding/og-image.png" />
+  <meta property="og:url" content="https://annovatech.cl/blog" />
+  <meta property="og:image" content="https://annovatech.cl/assets/images/branding/og-image.png" />
+  <meta property="og:image:secure_url" content="https://annovatech.cl/assets/images/branding/og-image.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -51,7 +51,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     name="twitter:description"
     content="Ideas, estrategias y contenido útil para mejorar tu presencia digital y atraer más clientes."
   />
-  <meta name="twitter:image" content="https://www.annovatech.cl/assets/images/branding/og-image.png" />
+  <meta name="twitter:url" content="https://annovatech.cl/blog" />
+  <meta name="twitter:image" content="https://annovatech.cl/assets/images/branding/og-image.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -75,34 +76,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "@graph": [
       {
         "@type": "Blog",
+        "@id": "https://annovatech.cl/blog#blog",
         "name": "Blog de AnnovaTech",
-        "url": "https://www.annovatech.cl/blog.html",
+        "url": "https://annovatech.cl/blog",
         "description": "Blog sobre diseño web, landing pages, marketing digital y conversión.",
         "publisher": {
           "@type": "Organization",
           "name": "AnnovaTech",
-          "url": "https://www.annovatech.cl/"
+          "url": "https://annovatech.cl/"
         }
-      },
-    script.async = true;
-    document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    window.gtag = gtag;
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-R8S6NN076J', {
-      anonymize_ip: true,
-      transport_type: 'beacon'
-    });
-  });
-</script>
+      }
+    ]
+  }
+  </script>
 
 </head>
 <body>
