@@ -57,7 +57,7 @@
 /* ---------- TABLET HORIZONTAL / LAPTOP PEQUEÑA ---------- */
 @media (max-width: 992px) {
   :root {
-    --section-space: 90px;
+    --section-space: 80px;
   }
 
   h1 {
@@ -104,7 +104,7 @@
     gap: 18px;
     padding: 24px;
     border-radius: 20px;
-    background: rgba(18, 24, 38, 0.98);
+    background: var(--color-surface);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
   }
@@ -223,13 +223,13 @@
 @media (max-width: 768px) {
   :root {
     --container-padding: 16px;
-    --section-space: 78px;
+    --section-space: 64px;
   }
 
   .site-header {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    background: rgba(10, 15, 26, 0.94);
+    background: var(--color-bg-primary);
     box-shadow: none;
   }
 
@@ -250,19 +250,19 @@
   .hero-overlay-card {
     backdrop-filter: none;
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.26);
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.94), rgba(10, 15, 26, 0.98));
+    background: var(--color-surface);
   }
 
   .whatsapp-float {
-    box-shadow: 0 12px 24px rgba(34, 197, 94, 0.22);
+    box-shadow: var(--shadow-sm);
   }
 
   body {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 36px;
     line-height: 1.1;
   }
 
@@ -424,8 +424,8 @@
   .whatsapp-float {
     right: max(16px, calc(env(safe-area-inset-right) + 12px));
     bottom: max(16px, calc(env(safe-area-inset-bottom) + 16px));
-    min-height: 56px;
-    min-width: 56px;
+    min-height: 48px;
+    min-width: 48px;
     padding: 0 18px;
     font-size: 14px;
   }
@@ -434,23 +434,23 @@
 /* ---------- MÓVIL ESTÁNDAR ---------- */
 @media (max-width: 576px) {
   :root {
-    --section-space: 68px;
+    --section-space: 64px;
   }
 
   h1 {
-    font-size: 34px;
+    font-size: 36px;
     letter-spacing: -0.7px;
   }
 
   .section-heading h2,
   h2 {
-    font-size: 26px;
+    font-size: 30px;
   }
 
   .btn {
     min-height: 50px;
     padding: 0 18px;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .header-container {
@@ -575,12 +575,12 @@
 /* ---------- MÓVILES MUY PEQUEÑOS ---------- */
 @media (max-width: 400px) {
   h1 {
-    font-size: 30px;
+    font-size: 32px;
   }
 
   .section-heading h2,
   h2 {
-    font-size: 24px;
+    font-size: 30px;
   }
 
   .logo {
@@ -625,8 +625,8 @@
     right: max(16px, calc(env(safe-area-inset-right) + 10px));
     bottom: max(16px, calc(env(safe-area-inset-bottom) + 14px));
     padding: 0 16px;
-    min-height: 56px;
-    min-width: 56px;
+    min-height: 48px;
+    min-width: 48px;
     font-size: 13px;
   }
 }
@@ -634,5 +634,12 @@
 @media (max-width: 992px) {
   .hero-image-wrapper {
     max-width: 100%;
+  }
+}
+
+/* Evitar que WhatsApp tape contenido en móvil */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    display: none;
   }
 }
