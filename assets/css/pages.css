@@ -1252,7 +1252,8 @@ button[disabled] {
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  column-gap: 26px;
+  row-gap: 36px;
 }
 
 .blog-card {
