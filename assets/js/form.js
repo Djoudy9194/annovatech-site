@@ -86,7 +86,7 @@ function initializeLeadForm(form) {
         field.classList.remove("input-success");
       });
 
-      window.location.href = resolveSuccessRedirect(form);
+      window.location.href = createLeadSuccessRedirect(form);
       return;
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
@@ -240,10 +240,45 @@ function resolveSuccessRedirect(form) {
   return successRedirect;
 }
 
-function pushTrackingEvent(eventName, detail) {
-  if (!window.ANNOVA_TRACKING || typeof window.ANNOVA_TRACKING.pushEvent !== "function") {
-    return;
-  }
+function createLeadSuccessRedirect(form) {
+  const redirect = resolveSuccessRedirect(form);
 
-  window.ANNOVA_TRACKING.pushEvent(eventName, detail);
+  try {
+    const destination = new URL(redirect, window.location.href);
+    if (destination.origin !== window.location.origin ||
+        !["/pages/gracias", "/pages/gracias.html"].includes(destination.pathname) ||
+        form.id !== "contact-form" || form.getAttribute("name") !== "contacto") {
+      return redirect;
+    }
+
+    const bytes = new Uint8Array(16);
+    window.crypto.getRandomValues(bytes);
+    const id = Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+    const receipt = {
+      id,
+      provider: "netlify",
+      formId: "contact-form",
+      formName: "contacto",
+      destination: "/pages/gracias",
+      createdAt: Date.now()
+    };
+
+    window.sessionStorage.setItem("annovatech-lead:" + id, JSON.stringify(receipt));
+    destination.searchParams.set("lead_receipt", id);
+    return destination.href;
+  } catch (error) {
+    // Measurement must never prevent a successful form redirect.
+    return redirect;
+  }
+}
+
+function pushTrackingEvent(eventName, detail) {
+  try {
+    if (!window.ANNOVA_TRACKING || typeof window.ANNOVA_TRACKING.pushEvent !== "function") {
+      return;
+    }
+    window.ANNOVA_TRACKING.pushEvent(eventName, detail);
+  } catch (error) {
+    // Analytics failures must not change the outcome of a form submission.
+  }
 }
