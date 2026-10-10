@@ -1,4 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => {
+(function () {
+  if (window.ANNOVA_MAIN_INITIALIZATION_SCHEDULED) return;
+  window.ANNOVA_MAIN_INITIALIZATION_SCHEDULED = true;
+
+  function initializeMain() {
   const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
   const sections = document.querySelectorAll("main section[id]");
   const menuToggle = document.getElementById("menu-toggle");
@@ -113,4 +117,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (initialSection?.id) {
     setActiveLink(initialSection.id);
   }
-});
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeMain, { once: true });
+  } else {
+    initializeMain();
+  }
+})();

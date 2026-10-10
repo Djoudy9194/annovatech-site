@@ -14,7 +14,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="description" content="Gracias por contactar a ANNOVA TECH SpA. Hemos recibido tu solicitud y pronto revisaremos tu proyecto." />
   <meta name="author" content="ANNOVA TECH SpA" />
   <meta name="robots" content="noindex,nofollow" />
-  <meta name="theme-color" content="#0A0F1A" />
+  <meta name="theme-color" content="#0D0F12" />
   <link rel="canonical" href="https://annovatech.cl/pages/gracias" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/branding/favicon-48x48.png" />
@@ -23,6 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/branding/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta property="og:title" content="Gracias por tu mensaje | AnnovaTech" />
   <meta property="og:description" content="Confirmación de solicitud enviada a AnnovaTech." />
@@ -41,8 +42,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="twitter:image" content="https://annovatech.cl/assets/images/branding/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" /></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/responsive.css" />
   <link rel="stylesheet" href="../assets/css/pages.css" />
@@ -213,25 +214,53 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <script>
 window.addEventListener('load', () => {
-  const payload = {
-    currency: 'CLP',
-    value: 1,
-    method: 'contact_form'
-  };
+  const url = new URL(window.location.href);
+  const ids = url.searchParams.getAll('lead_receipt');
+  if (ids.length === 0) return;
 
-  if (window.ANNOVA_TRACKING && typeof window.ANNOVA_TRACKING.pushEvent === 'function') {
-    window.ANNOVA_TRACKING.pushEvent('generate_lead', payload);
-    return;
+  url.searchParams.delete('lead_receipt');
+  try {
+    window.history.replaceState(window.history.state, '', url.href);
+  } catch (error) {
+    // URL cleanup is best-effort; receipt consumption prevents duplicate events.
   }
 
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: 'generate_lead',
-    page_path: window.location.pathname,
-    page_title: document.title,
-    ...payload
-  });
-});
+  if (ids.length !== 1 || !/^[a-f0-9]{32}$/.test(ids[0])) return;
+
+  try {
+    const key = 'annovatech-lead:' + ids[0];
+    const receipt = JSON.parse(window.sessionStorage.getItem(key));
+    const age = receipt && Date.now() - receipt.createdAt;
+    const destination = ['/pages/gracias', '/pages/gracias.html', '/pages/gracias/']
+      .includes(url.pathname) ? '/pages/gracias' : url.pathname;
+
+    if (!receipt || receipt.id !== ids[0] || receipt.provider !== 'netlify' ||
+        receipt.formId !== 'contact-form' || receipt.formName !== 'contacto' ||
+        receipt.destination !== '/pages/gracias' || destination !== receipt.destination ||
+        !Number.isFinite(receipt.createdAt) || age < 0 || age > 5 * 60 * 1000) {
+      window.sessionStorage.removeItem(key);
+      return;
+    }
+
+    // Consume before publishing: reloads and history cannot retry this receipt.
+    window.sessionStorage.removeItem(key);
+    const payload = { currency: 'CLP', value: 1, method: 'contact_form' };
+
+    if (window.ANNOVA_TRACKING && typeof window.ANNOVA_TRACKING.pushEvent === 'function') {
+      window.ANNOVA_TRACKING.pushEvent('generate_lead', payload);
+    } else {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'generate_lead',
+        page_path: window.location.pathname,
+        page_title: document.title,
+        ...payload
+      });
+    }
+  } catch (error) {
+    // Storage or analytics failures omit measurement without affecting the page.
+  }
+}, { once: true });
 </script>
 </body>
 </html>
