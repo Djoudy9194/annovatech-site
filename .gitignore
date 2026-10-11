@@ -3,3 +3,8 @@ server.log
 report.json
 new_report.json
 perf_*.json
+# Copias de seguridad locales
+*.backup
+*.bak
+# Herramientas internas de auditoría local
+/tools/
