@@ -1,0 +1,152 @@
+
+/* AnnovaTech Branding V2 — Custom Select */
+
+.annova-select {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+/* El select nativo permanece disponible para el formulario.
+   Solo se oculta visualmente cuando el componente está listo. */
+.form-group select.annova-select__native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.annova-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 52px;
+  padding: 15px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font: inherit;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.annova-select.is-placeholder .annova-select__trigger {
+  color: var(--color-text-muted);
+}
+
+.annova-select__trigger::after {
+  content: "";
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform var(--transition-fast);
+}
+
+.annova-select.is-open .annova-select__trigger::after {
+  transform: rotate(225deg) translateY(-2px);
+}
+
+.annova-select__trigger:hover {
+  border-color: var(--color-accent-primary);
+}
+
+.annova-select__trigger:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 3px;
+}
+
+.annova-select.is-open .annova-select__trigger {
+  border-color: var(--color-accent-primary);
+}
+
+.annova-select__list {
+  position: absolute;
+  z-index: 100;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  max-height: 260px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-secondary);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+}
+
+.annova-select__list[hidden] {
+  display: none !important;
+}
+
+.annova-select__option {
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: var(--color-text-primary);
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+  outline: none;
+}
+
+.annova-select__option:hover,
+.annova-select__option:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.annova-select__option[aria-selected="true"] {
+  background: var(--color-accent-primary);
+  color: #111827;
+  font-weight: 600;
+}
+
+.annova-select.input-error .annova-select__trigger {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.annova-select.input-success .annova-select__trigger {
+  border-color: rgba(34, 197, 94, 0.45);
+}
+
+@media (max-width: 767px) {
+  .annova-select__trigger {
+    min-height: 52px;
+    font-size: 16px;
+  }
+
+  .annova-select__list {
+    max-height: min(260px, 45vh);
+  }
+
+  .annova-select__option {
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .annova-select__trigger,
+  .annova-select__trigger::after {
+    transition: none;
+  }
+}

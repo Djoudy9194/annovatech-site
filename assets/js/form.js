@@ -12,19 +12,34 @@ function initializeLeadForms() {
 }
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initializeLeadForms, { once: true });
+  document.addEventListener("DOMContentLoaded", initializeLeadForms, {
+    once: true,
+  });
 } else {
   initializeLeadForms();
 }
 
 function initializeLeadForm(form) {
   const submitButton = form.querySelector('button[type="submit"]');
+  let isSubmitting = false;
+  // La validación personalizada sustituye a la nativa
+  // únicamente cuando JavaScript inicializa el formulario.
+  form.noValidate = true;
   const fields = [
     { input: form.querySelector('[name="nombre"]'), validator: validateName },
     { input: form.querySelector('[name="email"]'), validator: validateEmail },
-    { input: form.querySelector('[name="telefono"]'), validator: validatePhone },
-    { input: form.querySelector('[name="servicio"]'), validator: validateService },
-    { input: form.querySelector('[name="mensaje"]'), validator: validateMessage },
+    {
+      input: form.querySelector('[name="telefono"]'),
+      validator: validatePhone,
+    },
+    {
+      input: form.querySelector('[name="servicio"]'),
+      validator: validateService,
+    },
+    {
+      input: form.querySelector('[name="mensaje"]'),
+      validator: validateMessage,
+    },
   ].filter(({ input }) => Boolean(input));
 
   fields.forEach(({ input, validator }) => {
@@ -45,15 +60,40 @@ function initializeLeadForm(form) {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const isFormValid = fields.every(({ input, validator }) => {
+    if (isSubmitting) {
+      return;
+    }
+
+    const validationResults = fields.map(({ input, validator }) => {
       return validateField(input, validator);
     });
 
+    const isFormValid = validationResults.every(Boolean);
+
     if (!isFormValid) {
+      const firstInvalidField = fields.find(({ input }) =>
+        input.classList.contains("input-error"),
+      )?.input;
+
+      if (firstInvalidField) {
+        const visibleControl = firstInvalidField.matches(
+          "select.annova-select__native",
+        )
+          ? firstInvalidField.nextElementSibling?.querySelector(
+              ".annova-select__trigger",
+            )
+          : firstInvalidField;
+
+        visibleControl?.focus({ preventScroll: true });
+        visibleControl?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
       showFormStatus(
         form,
         "Revisa los campos marcados antes de enviar tu solicitud.",
-        "error"
+        "error",
       );
       pushTrackingEvent("form_submit_error", {
         form_id: form.id || form.getAttribute("name") || "lead-form",
@@ -65,6 +105,7 @@ function initializeLeadForm(form) {
     const formData = new FormData(form);
 
     try {
+      isSubmitting = true;
       setSubmittingState(submitButton, true);
       showFormStatus(form, "Enviando tu solicitud...", "loading");
 
@@ -78,7 +119,7 @@ function initializeLeadForm(form) {
       showFormStatus(
         form,
         "Tu solicitud fue enviada correctamente. Te responderemos a la brevedad.",
-        "success"
+        "success",
       );
 
       form.reset();
@@ -93,13 +134,15 @@ function initializeLeadForm(form) {
       showFormStatus(
         form,
         "No pudimos enviar tu solicitud en este momento. Intenta nuevamente o escríbenos por WhatsApp.",
-        "error"
+        "error",
       );
       pushTrackingEvent("form_submit_error", {
         form_id: form.id || form.getAttribute("name") || "contacto",
         error_type: "netlify",
       });
     } finally {
+      isSubmitting = false;
+
       setSubmittingState(submitButton, false);
     }
   });
@@ -139,49 +182,56 @@ function getErrorMessage(inputName) {
   return messages[inputName] || "Este campo no es válido.";
 }
 
+function clearError(input) {
+  const formGroup = input.closest(".form-group");
+
+  if (formGroup) {
+    formGroup
+      .querySelectorAll(".input-message.error-message")
+      .forEach((message) => message.remove());
+  }
+
+  input.classList.remove("input-error");
+}
+
 function showError(input, message) {
   clearError(input);
+
   input.classList.add("input-error");
   input.classList.remove("input-success");
 
-  const error = document.createElement("small");
-  error.className = "input-message error-message";
-  error.textContent = message;
-
   const formGroup = input.closest(".form-group");
+
   if (formGroup) {
+    const error = document.createElement("small");
+    error.className = "input-message error-message";
+    error.textContent = message;
     formGroup.appendChild(error);
   }
 }
 
 function showSuccess(input) {
   clearError(input);
+
   input.classList.remove("input-error");
   input.classList.add("input-success");
-}
-
-function clearError(input) {
-  input.classList.remove("input-error");
-
-  const formGroup = input.closest(".form-group");
-  if (!formGroup) return;
-
-  const oldMessage = formGroup.querySelector(".input-message");
-  if (oldMessage) {
-    oldMessage.remove();
-  }
 }
 
 function validateField(input, validator) {
   const isValid = validator(input.value);
 
-  if (!isValid) {
+  if (isValid) {
+    showSuccess(input);
+  } else {
     showError(input, getErrorMessage(input.name));
-    return false;
   }
 
-  showSuccess(input);
-  return true;
+  // Sincronizar errores y estados con el selector personalizado.
+  if (input.matches("select.annova-select__native")) {
+    input.dispatchEvent(new Event("annova-validation", { bubbles: false }));
+  }
+
+  return isValid;
 }
 
 function setSubmittingState(submitButton, isSubmitting) {
@@ -245,25 +295,35 @@ function createLeadSuccessRedirect(form) {
 
   try {
     const destination = new URL(redirect, window.location.href);
-    if (destination.origin !== window.location.origin ||
-        !["/pages/gracias", "/pages/gracias.html"].includes(destination.pathname) ||
-        form.id !== "contact-form" || form.getAttribute("name") !== "contacto") {
+    if (
+      destination.origin !== window.location.origin ||
+      !["/pages/gracias", "/pages/gracias.html"].includes(
+        destination.pathname,
+      ) ||
+      form.id !== "contact-form" ||
+      form.getAttribute("name") !== "contacto"
+    ) {
       return redirect;
     }
 
     const bytes = new Uint8Array(16);
     window.crypto.getRandomValues(bytes);
-    const id = Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+    const id = Array.from(bytes, (byte) =>
+      byte.toString(16).padStart(2, "0"),
+    ).join("");
     const receipt = {
       id,
       provider: "netlify",
       formId: "contact-form",
       formName: "contacto",
       destination: "/pages/gracias",
-      createdAt: Date.now()
+      createdAt: Date.now(),
     };
 
-    window.sessionStorage.setItem("annovatech-lead:" + id, JSON.stringify(receipt));
+    window.sessionStorage.setItem(
+      "annovatech-lead:" + id,
+      JSON.stringify(receipt),
+    );
     destination.searchParams.set("lead_receipt", id);
     return destination.href;
   } catch (error) {
@@ -274,7 +334,10 @@ function createLeadSuccessRedirect(form) {
 
 function pushTrackingEvent(eventName, detail) {
   try {
-    if (!window.ANNOVA_TRACKING || typeof window.ANNOVA_TRACKING.pushEvent !== "function") {
+    if (
+      !window.ANNOVA_TRACKING ||
+      typeof window.ANNOVA_TRACKING.pushEvent !== "function"
+    ) {
       return;
     }
     window.ANNOVA_TRACKING.pushEvent(eventName, detail);

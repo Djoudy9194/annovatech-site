@@ -41,12 +41,15 @@
       return;
     }
 
-    const loadTargetScripts = () => {
-      scripts.forEach((src) => {
-        loadScript(src).catch(() => {
-          // Ignore lazy script failures to preserve core page functionality.
-        });
-      });
+        const loadTargetScripts = async () => {
+      for (const src of scripts) {
+        try {
+          await loadScript(src);
+        } catch (error) {
+          console.error(`No se pudo cargar el script: ${src}`, error);
+          break;
+        }
+      }
     };
 
     if (!("IntersectionObserver" in window)) {
@@ -84,7 +87,10 @@
       });
     });
 
-    loadScriptsWhenVisible("#contact", ["assets/js/form.js"]);
+    loadScriptsWhenVisible("#contact", [
+      "assets/js/form.js",
+      "assets/js/custom-select.js",
+    ]);
     loadScriptsWhenVisible("#analytics", ["assets/js/counters.js"]);
     loadScriptsWhenVisible("#testimonials", ["assets/js/slider.js"]);
   });
